@@ -1,12 +1,11 @@
-import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component } from '@angular/core';
+import { Controles } from './controles/controles';
+import { Figura } from './figura/figura';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [Figura, Controles],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
-export class App {
-  protected readonly title = signal('hackaton-pgmii');
-}
+export class App {}
