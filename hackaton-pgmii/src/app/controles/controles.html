@@ -1,53 +1,92 @@
 <section class="est3-panel">
-  <label>Traslación X
-    <input
-      type="range"
-      min="-300"
-      max="300"
-      [value]="tx"
-      (input)="tx = +$any($event.target).value; emitir()"
-    />
-    {{ tx }}
-  </label>
-  <label>Traslación Y
-    <input
-      type="range"
-      min="-220"
-      max="220"
-      [value]="ty"
-      (input)="ty = +$any($event.target).value; emitir()"
-    />
-    {{ ty }}
-  </label>
-  <label>Escala
-    <input
-      type="range"
-      min="0.2"
-      max="3"
-      step="0.05"
-      [value]="scale"
-      (input)="scale = +$any($event.target).value; emitir()"
-    />
-    {{ scale }}
-  </label>
+  <div class="control-group">
+    <label>
+      Traslación X
+      <input
+        type="range"
+        min="-300"
+        max="300"
+        [value]="tx"
+        (input)="tx = +$any($event.target).value; emitir()"
+      />
+      <span class="valor">{{ tx }}</span>
+    </label>
+    <label>
+      Traslación Y
+      <input
+        type="range"
+        min="-220"
+        max="220"
+        [value]="ty"
+        (input)="ty = +$any($event.target).value; emitir()"
+      />
+      <span class="valor">{{ ty }}</span>
+    </label>
+    <label>
+      Escala
+      <input
+        type="range"
+        min="0.2"
+        max="3"
+        step="0.05"
+        [value]="scale"
+        (input)="scale = +$any($event.target).value; emitir()"
+      />
+      <span class="valor">{{ scale }}</span>
+    </label>
+  </div>
 
-  <div class="flip-buttons">
-    <button
-      type="button"
-      class="flip"
-      [class.active]="state?.flipX"
-      (click)="toggleFlipX()"
-    >
-      Reflejo horizontal
+  <div class="control-group rotacion">
+    <h3>Rotación</h3>
+    <label for="rotacion">Ángulo: {{ angulo }}°</label>
+    <input
+      id="rotacion"
+      type="range"
+      min="0"
+      max="360"
+      step="1"
+      [value]="angulo"
+      (input)="cambiarRotacion($event)"
+    />
+    <button type="button" class="reset" (click)="resetearRotacion()">
+      Reiniciar rotación
     </button>
-    <button
-      type="button"
-      class="flip"
-      [class.active]="state?.flipY"
-      (click)="toggleFlipY()"
-    >
-      Reflejo vertical
-    </button>
+    <div class="matriz">
+      <h3>Matriz de rotación</h3>
+      <p>
+        [ {{ matrizRotacion[0] | number: '1.2-2' }},
+          {{ matrizRotacion[2] | number: '1.2-2' }},
+          {{ matrizRotacion[4] | number: '1.2-2' }} ]
+      </p>
+      <p>
+        [ {{ matrizRotacion[1] | number: '1.2-2' }},
+          {{ matrizRotacion[3] | number: '1.2-2' }},
+          {{ matrizRotacion[5] | number: '1.2-2' }} ]
+      </p>
+      <p>[ 0.00, 0.00, 1.00 ]</p>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <h3>Reflejos</h3>
+    <div class="flip-buttons">
+      <button
+        type="button"
+        class="flip"
+        [class.active]="state?.flipX"
+        (click)="toggleFlipX()"
+      >
+        Reflejo horizontal
+      </button>
+      <button
+        type="button"
+        class="flip"
+        [class.active]="state?.flipY"
+        (click)="toggleFlipY()"
+      >
+        Reflejo vertical
+      </button>
+    </div>
   </div>
 
   <div class="matrix-panel">
