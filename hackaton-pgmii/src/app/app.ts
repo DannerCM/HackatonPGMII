@@ -1,13 +1,21 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { ControlesComponent } from './controles/controles';
+import { Figura } from './figura/figura';
+import { Controles } from './controles/controles';
+import { TransformState } from './transform.model';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, ControlesComponent],
+  imports: [Figura, Controles],
   templateUrl: './app.html',
-  styleUrl: './app.css'
+  styleUrl: './app.css',
 })
 export class App {
-  title = 'hackaton-pgmii';
+  state: TransformState = {
+    tx: 0,
+    ty: 0,
+    scale: 1,
+    angle: 0,
+    flipX: false,
+    flipY: false,
+  };
 }

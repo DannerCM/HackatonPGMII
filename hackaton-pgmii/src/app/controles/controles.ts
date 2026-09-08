@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, Output, EventEmitter, AfterViewInit } from '@angular/core';
 import { DecimalPipe } from '@angular/common';
 import { mat2d } from 'gl-matrix';
 
@@ -7,18 +7,39 @@ import { mat2d } from 'gl-matrix';
   standalone: true,
   imports: [DecimalPipe],
   templateUrl: './controles.html',
-  styleUrl: './controles.css'
+  styleUrl: './controles.css',
 })
-export class ControlesComponent {
+export class Controles implements AfterViewInit {
 
-  @Output() rotacionChange = new EventEmitter<{
-    angulo: number;
-    matriz: number[];
+  @Output() stateChange = new EventEmitter<{
+    tx: number;
+    ty: number;
+    scale: number;
+    angle: number;
   }>();
 
+  tx = 0;
+  ty = 0;
+  scale = 1;
+
+  // Mi parte: rotación
   angulo = 0;
 
   matrizRotacion: number[] = [1, 0, 0, 1, 0, 0];
+
+  ngAfterViewInit(): void {
+    this.calcularMatrizRotacion();
+    this.emitir();
+  }
+
+  emitir(): void {
+    this.stateChange.emit({
+      tx: this.tx,
+      ty: this.ty,
+      scale: this.scale,
+      angle: this.angulo
+    });
+  }
 
   cambiarRotacion(event: Event): void {
     const input = event.target as HTMLInputElement;
@@ -26,6 +47,7 @@ export class ControlesComponent {
     this.angulo = Number(input.value);
 
     this.calcularMatrizRotacion();
+    this.emitir();
   }
 
   calcularMatrizRotacion(): void {
@@ -36,16 +58,12 @@ export class ControlesComponent {
     mat2d.rotate(matriz, matriz, anguloRad);
 
     this.matrizRotacion = Array.from(matriz);
-
-    this.rotacionChange.emit({
-      angulo: this.angulo,
-      matriz: this.matrizRotacion
-    });
   }
 
   resetearRotacion(): void {
     this.angulo = 0;
 
     this.calcularMatrizRotacion();
+    this.emitir();
   }
 }

@@ -1,5 +1,7 @@
-<h1>Transformaciones geométricas</h1>
+<app-controles
+  (stateChange)="state = { ...state, ...$event }"
+/>
 
-<app-controles></app-controles>
-
-<router-outlet></router-outlet>
+<app-figura
+  [state]="state"
+/>
