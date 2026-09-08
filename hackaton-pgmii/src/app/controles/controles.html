@@ -21,3 +21,12 @@
   </div>
 
   </section>
+
+  <div class="matrix-panel">
+    <h3>Matriz aplicada (glMatrix mat2d)</h3>
+    <pre>
+[ {{ transform.matrix()[0].toFixed(3) }}  {{ transform.matrix()[1].toFixed(3) }} ]
+[ {{ transform.matrix()[2].toFixed(3) }}  {{ transform.matrix()[3].toFixed(3) }} ]
+tx: {{ transform.matrix()[4].toFixed(2) }}  ty: {{ transform.matrix()[5].toFixed(2) }}
+    </pre>
+  </div>
