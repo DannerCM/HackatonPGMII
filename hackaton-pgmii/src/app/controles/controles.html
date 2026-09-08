@@ -1,1 +1,39 @@
-<p>controles works!</p>
+<div class="controles">
+
+  <h2>Rotación</h2>
+
+  <label for="rotacion">
+    Ángulo: {{ angulo }}°
+  </label>
+
+  <input
+    id="rotacion"
+    type="range"
+    min="0"
+    max="360"
+    step="1"
+    [value]="angulo"
+    (input)="cambiarRotacion($event)"
+  >
+
+  <div class="matriz">
+    <h3>Matriz de rotación</h3>
+
+    <p>
+      [ {{ matrizRotacion[0] | number:'1.2-2' }},
+        {{ matrizRotacion[2] | number:'1.2-2' }},
+        {{ matrizRotacion[4] | number:'1.2-2' }} ]
+    </p>
+
+    <p>
+      [ {{ matrizRotacion[1] | number:'1.2-2' }},
+        {{ matrizRotacion[3] | number:'1.2-2' }},
+        {{ matrizRotacion[5] | number:'1.2-2' }} ]
+    </p>
+  </div>
+
+  <button (click)="resetearRotacion()">
+    Reiniciar rotación
+  </button>
+
+</div>
