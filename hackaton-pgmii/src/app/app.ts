@@ -18,4 +18,18 @@ export class App {
     flipX: false,
     flipY: false,
   };
+
+  matrix: number[] = [];
+
+  onMatrixChange(m: number[]): void {
+    this.matrix = m;
+  }
+
+  toggleFlipX(): void {
+    this.state = { ...this.state, flipX: !this.state.flipX };
+  }
+
+  toggleFlipY(): void {
+    this.state = { ...this.state, flipY: !this.state.flipY };
+  }
 }

@@ -3,6 +3,8 @@ import {
   Input,
   ViewChildren,
   QueryList,
+  Output,
+  EventEmitter,
   AfterViewInit,
   OnChanges,
 } from '@angular/core';
@@ -18,6 +20,7 @@ import { TransformState } from '../transform.model';
 })
 export class Figura implements AfterViewInit, OnChanges {
   @Input() state: TransformState | null = null;
+  @Output() matrixChange = new EventEmitter<number[]>();
   @ViewChildren('cara', { read: CoreShapeComponent })
   caras?: QueryList<CoreShapeComponent>;
 
@@ -78,6 +81,7 @@ export class Figura implements AfterViewInit, OnChanges {
     mat4.multiply(modelo, T, P);
     mat4.multiply(modelo, modelo, R);
     mat4.multiply(modelo, modelo, S);
+    this.matrixChange.emit(Array.from(modelo));
 
     const proj = mat4.ortho(
       mat4.create(),

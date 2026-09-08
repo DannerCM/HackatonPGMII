@@ -1,31 +1,61 @@
-<label>Traslación X
-  <input
-    type="range"
-    min="-300"
-    max="300"
-    [value]="tx"
-    (input)="tx = +$any($event.target).value; emitir()"
-  />
-  {{ tx }}
-</label>
-<label>Traslación Y
-  <input
-    type="range"
-    min="-220"
-    max="220"
-    [value]="ty"
-    (input)="ty = +$any($event.target).value; emitir()"
-  />
-  {{ ty }}
-</label>
-<label>Escala
-  <input
-    type="range"
-    min="0.2"
-    max="3"
-    step="0.05"
-    [value]="scale"
-    (input)="scale = +$any($event.target).value; emitir()"
-  />
-  {{ scale }}
-</label>
+<section class="est3-panel">
+  <label>Traslación X
+    <input
+      type="range"
+      min="-300"
+      max="300"
+      [value]="tx"
+      (input)="tx = +$any($event.target).value; emitir()"
+    />
+    {{ tx }}
+  </label>
+  <label>Traslación Y
+    <input
+      type="range"
+      min="-220"
+      max="220"
+      [value]="ty"
+      (input)="ty = +$any($event.target).value; emitir()"
+    />
+    {{ ty }}
+  </label>
+  <label>Escala
+    <input
+      type="range"
+      min="0.2"
+      max="3"
+      step="0.05"
+      [value]="scale"
+      (input)="scale = +$any($event.target).value; emitir()"
+    />
+    {{ scale }}
+  </label>
+
+  <div class="flip-buttons">
+    <button
+      type="button"
+      class="flip"
+      [class.active]="state?.flipX"
+      (click)="toggleFlipX()"
+    >
+      Reflejo horizontal
+    </button>
+    <button
+      type="button"
+      class="flip"
+      [class.active]="state?.flipY"
+      (click)="toggleFlipY()"
+    >
+      Reflejo vertical
+    </button>
+  </div>
+
+  <div class="matrix-panel">
+    <h3>Matriz aplicada (glMatrix mat4)</h3>
+    <pre>
+@for (row of rows(); track $index) {
+[ {{ row[0].toFixed(4) }}  {{ row[1].toFixed(4) }}  {{ row[2].toFixed(4) }}  {{ row[3].toFixed(4) }} ]
+}
+    </pre>
+  </div>
+</section>

@@ -1,8 +1,8 @@
 export interface TransformState {
-  tx: number;
-  ty: number;
-  scale: number;
-  angle: number;
-  flipX: boolean;
-  flipY: boolean;
+  tx: number;      // traslacion en X
+  ty: number;      // traslacion en Y
+  scale: number;   // factor de escala
+  angle: number;   // angulo de rotacion en grados
+  flipX: boolean;  // reflejo horizontal
+  flipY: boolean;  // reflejo vertical
 }

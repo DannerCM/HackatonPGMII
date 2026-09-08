@@ -1,2 +1,8 @@
-<app-controles (stateChange)="state = { ...state, ...$event }" />
-<app-figura [state]="state" />
+<app-controles
+  [state]="state"
+  [matrix]="matrix"
+  (stateChange)="state = { ...state, ...$event }"
+  (flipXChange)="toggleFlipX()"
+  (flipYChange)="toggleFlipY()"
+/>
+<app-figura [state]="state" (matrixChange)="onMatrixChange($event)" />
