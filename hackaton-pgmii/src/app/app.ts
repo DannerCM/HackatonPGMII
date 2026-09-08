@@ -1,12 +1,21 @@
-import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component } from '@angular/core';
+import { Figura } from './figura/figura';
+import { Controles } from './controles/controles';
+import { TransformState } from './transform.model';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [Figura, Controles],
   templateUrl: './app.html',
-  styleUrl: './app.css'
+  styleUrl: './app.css',
 })
 export class App {
-  protected readonly title = signal('hackaton-pgmii');
+  state: TransformState = {
+    tx: 0,
+    ty: 0,
+    scale: 1,
+    angle: 0,
+    flipX: false,
+    flipY: false,
+  };
 }
