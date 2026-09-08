@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { TransformService } from '../transform.service';
 
 @Component({
   selector: 'app-controles',
@@ -7,14 +8,13 @@ import { Component } from '@angular/core';
   styleUrl: './controles.css'
 })
 export class Controles {
-  flipX = false;
-  flipY = false;
+  constructor(readonly transform: TransformService) {}
 
   toggleFlipX(): void {
-    this.flipX = !this.flipX;
+    this.transform.toggleFlipX();
   }
 
   toggleFlipY(): void {
-    this.flipY = !this.flipY;
+    this.transform.toggleFlipY();
   }
 }
