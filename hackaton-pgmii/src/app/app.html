@@ -1,8 +1,21 @@
-<app-controles
-  [state]="state"
-  [matrix]="matrix"
-  (stateChange)="state = { ...state, ...$event }"
-  (flipXChange)="toggleFlipX()"
-  (flipYChange)="toggleFlipY()"
-/>
-<app-figura [state]="state" (matrixChange)="onMatrixChange($event)" />
+<header class="app-header">
+  <div>
+    <h1>Transformador de Figuras Geométricas</h1>
+    <p class="sub">Est1: traslación y escala &middot; Est2: rotación &middot; Est3: reflejo y matriz</p>
+  </div>
+</header>
+
+<main class="app-main">
+  <section class="canvas-card">
+    <app-figura [state]="state" (matrixChange)="onMatrixChange($event)" />
+  </section>
+  <aside class="controles-card">
+    <app-controles
+      [state]="state"
+      [matrix]="matrix"
+      (stateChange)="state = { ...state, ...$event }"
+      (flipXChange)="toggleFlipX()"
+      (flipYChange)="toggleFlipY()"
+    />
+  </aside>
+</main>

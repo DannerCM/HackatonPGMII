@@ -1,26 +1,61 @@
 :host {
   display: flex;
-  gap: 2rem;
+  flex-direction: column;
+  min-height: 100dvh;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background: #f1f5f9;
+  color: #0f172a;
+}
+
+.app-header {
+  display: flex;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  background: linear-gradient(135deg, #1e293b, #312e81);
+  color: #fff;
+  border-bottom: 3px solid #7c3aed;
+}
+
+.app-header h1 {
+  margin: 0;
+  font-size: 1.3rem;
+  letter-spacing: -0.02em;
+}
+
+.app-header .sub {
+  margin: 0.25rem 0 0;
+  font-size: 0.8rem;
+  opacity: 0.75;
+}
+
+.app-main {
+  display: flex;
+  gap: 1.5rem;
   padding: 1.5rem;
-  font-family: sans-serif;
+  align-items: flex-start;
 }
 
-app-controles {
+.canvas-card {
+  flex: 1 1 640px;
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  padding: 1rem;
+  box-shadow: 0 10px 25px -5px rgb(0 0 0 / 8%);
   display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-  min-width: 240px;
+  justify-content: center;
 }
 
-label {
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
-  font-size: 0.9rem;
+.controles-card {
+  flex: 0 1 340px;
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  padding: 1.25rem;
+  box-shadow: 0 10px 25px -5px rgb(0 0 0 / 8%);
 }
 
 ko-stage,
 canvas {
-  border: 1px solid #ccc;
-  background: #fafafa;
+  border-radius: 10px;
 }

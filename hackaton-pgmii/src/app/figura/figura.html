@@ -1,5 +1,21 @@
 <ko-stage [config]="stageConfig">
   <ko-layer>
+    <ko-line
+      [config]="{
+        points: [0, 225, 600, 225],
+        stroke: '#cbd5e1',
+        strokeWidth: 1,
+        dash: [6, 6]
+      }"
+    />
+    <ko-line
+      [config]="{
+        points: [300, 0, 300, 450],
+        stroke: '#cbd5e1',
+        strokeWidth: 1,
+        dash: [6, 6]
+      }"
+    />
     <ko-line #cara [config]="caraConfig" />
     <ko-line #cara [config]="caraConfig" />
     <ko-line #cara [config]="caraConfig" />

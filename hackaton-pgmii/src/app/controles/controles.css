@@ -1,39 +1,139 @@
 .est3-panel {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 1.25rem;
+}
+
+.control-group {
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.control-group:last-of-type {
+  border-bottom: none;
+}
+
+.control-group h3 {
+  margin: 0 0 0.6rem;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #64748b;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  font-size: 0.9rem;
+  color: #334155;
+}
+
+label + label {
+  margin-top: 0.75rem;
+}
+
+input[type='range'] {
+  width: 100%;
+  accent-color: #7c3aed;
+  cursor: pointer;
+}
+
+.valor {
+  font-weight: 600;
+  color: #0f172a;
 }
 
 .flip-buttons {
   display: flex;
+  flex-wrap: wrap;
   gap: 0.5rem;
 }
 
 .flip {
-  padding: 0.5rem 1rem;
-  font-size: 0.9rem;
+  flex: 1 1 45%;
+  padding: 0.55rem 0.75rem;
+  font-size: 0.85rem;
+  font-weight: 600;
   border: 1px solid #7c3aed;
-  border-radius: 6px;
+  border-radius: 8px;
   background: #fff;
   color: #7c3aed;
   cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease, transform 0.1s ease;
+}
+
+.flip:hover {
+  background: #f5f3ff;
+}
+
+.flip:active {
+  transform: scale(0.97);
 }
 
 .flip.active {
   background: #7c3aed;
   color: #fff;
+  box-shadow: 0 4px 12px -2px rgb(124 58 237 / 60%);
+}
+
+.reset {
+  padding: 0.5rem 0.9rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  background: #f8fafc;
+  color: #475569;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.reset:hover {
+  background: #eef2f7;
+}
+
+.matriz {
+  margin-top: 0.75rem;
+  padding: 0.6rem 0.8rem;
+  background: #ecfdf5;
+  border: 1px solid #a7f3d0;
+  border-radius: 8px;
+}
+
+.matriz h3 {
+  margin: 0 0 0.4rem;
+  font-size: 0.8rem;
+  color: #047857;
+}
+
+.matriz p {
+  margin: 0.15rem 0;
+  font-family: ui-monospace, 'Cascadia Code', Consolas, monospace;
+  font-size: 0.82rem;
+  color: #065f46;
 }
 
 .matrix-panel {
-  background: #f1f5f9;
-  border: 1px solid #cbd5e1;
-  border-radius: 8px;
-  padding: 0.75rem 1rem;
+  background: #0f172a;
+  border: 1px solid #334155;
+  border-radius: 10px;
+  padding: 0.85rem 1rem;
+}
+
+.matrix-panel h3 {
+  margin: 0 0 0.5rem;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #a5f3fc;
 }
 
 .matrix-panel pre {
-  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-  font-size: 0.95rem;
-  line-height: 1.5;
   margin: 0;
+  font-family: ui-monospace, 'Cascadia Code', Consolas, monospace;
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: #7dd3fc;
+  text-shadow: 0 0 6px rgb(125 211 252 / 35%);
 }

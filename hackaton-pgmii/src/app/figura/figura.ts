@@ -54,7 +54,7 @@ export class Figura implements AfterViewInit, OnChanges {
   ];
 
   ngAfterViewInit(): void {
-    this.aplicarMatriz();
+    setTimeout(() => this.aplicarMatriz(), 0);
   }
 
   ngOnChanges(): void {
@@ -72,8 +72,8 @@ export class Figura implements AfterViewInit, OnChanges {
     mat4.rotateX(R, R, this.viewX);
     mat4.rotateY(R, R, (s.angle * Math.PI) / 180);
     const S = mat4.fromScaling(mat4.create(), [
-      this.base * s.scale * (s.flipX ? -1 : 1),
-      this.base * s.scale * (s.flipY ? -1 : 1),
+      this.base * s.scale,
+      this.base * s.scale,
       this.base * s.scale,
     ]);
 
@@ -81,7 +81,6 @@ export class Figura implements AfterViewInit, OnChanges {
     mat4.multiply(modelo, T, P);
     mat4.multiply(modelo, modelo, R);
     mat4.multiply(modelo, modelo, S);
-    this.matrixChange.emit(Array.from(modelo));
 
     const proj = mat4.ortho(
       mat4.create(),
@@ -93,6 +92,20 @@ export class Figura implements AfterViewInit, OnChanges {
       2000,
     );
     const mvp = mat4.multiply(mat4.create(), proj, modelo);
+
+    if (s.flipX) {
+      mvp[0] *= -1;
+      mvp[4] *= -1;
+      mvp[8] *= -1;
+      mvp[12] *= -1;
+    }
+    if (s.flipY) {
+      mvp[1] *= -1;
+      mvp[5] *= -1;
+      mvp[9] *= -1;
+      mvp[13] *= -1;
+    }
+    this.matrixChange.emit(Array.from(mvp));
 
     const resultados = this.carasDef.map((def) => {
       const puntos: number[] = [];

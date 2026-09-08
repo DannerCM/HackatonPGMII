@@ -31,7 +31,6 @@ export class Controles implements AfterViewInit {
 
   ngAfterViewInit(): void {
     this.calcularMatrizRotacion();
-    this.emitir();
   }
 
   emitir(): void {
